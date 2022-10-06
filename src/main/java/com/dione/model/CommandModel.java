@@ -21,9 +21,9 @@ public class CommandModel {
 	public CommandModel() {
 	}
 
-	public CommandModel(Long idCommand, UserModel userModel, Date dateC, double total) {
+	public CommandModel(Long idCommand, UserModel user, Date dateC, double total) {
 		this.idCommand = idCommand;
-		this.userModel = userModel;
+		this.user = user;
 		this.dateC = dateC;
 		this.total = total;
 	}
@@ -36,12 +36,12 @@ public class CommandModel {
 		this.idCommand = idCommand;
 	}
 
-	public UserModel getUserModel() {
-		return userModel;
+	public UserModel getUser() {
+		return user;
 	}
 
-	public void setUserModel(UserModel userModel) {
-		this.userModel = userModel;
+	public void setUser(UserModel user) {
+		this.user = user;
 	}
 
 	public Date getDateC() {
@@ -62,7 +62,7 @@ public class CommandModel {
 
 	@Override
 	public String toString() {
-		return "CommandModel [idCommand=" + idCommand + ", userModel=" + userModel + ", dateC=" + dateC + ", total="
+		return "CommandModel [idCommand=" + idCommand + ", user=" + user + ", dateC=" + dateC + ", total="
 				+ total + "]";
 	}
 	
