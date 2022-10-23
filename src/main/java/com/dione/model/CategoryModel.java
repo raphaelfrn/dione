@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name= "category")
 public class CategoryModel {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="id_category")

@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,24 +24,24 @@
 <title>Accueil</title>
 </head>
 <body>
-	<c:import url="/header"></c:import>
+	<div th:replace="fragments/header::header"></div>
 	<div class="container-hero-sildes">
-		<c:forEach items="${ListSlides}" var="ListSlides">
-			<div class="container-hero">
+		
+			<div class="container-hero" th:each="slide : ${ListSlides}">
 				<video class="video-hero" muted autoplay="autoplay" loop preload="auto">
-					<source src="${ListSlides.image}" type="video/mp4">
+					<source th:src="@{${slide.image}}" type="video/mp4">
 				</video>
 				
 				<div class="container-hero-infos">
 					<img class="icon-sound" alt="Icon son" src="assets/icon/sound.svg">
 					<div class="container-hero-title">
-						<h2>${ListSlides.sous_titre}</h2>
-						<h1>${ListSlides.titre}</h1>
+						<h2 th:text="${slide.sous_titre}"></h2>
+						<h1 th:text="${slide.titre}"></h1>
 					</div>
-					<a href="${ListSlides.url}"><button class="btn-hero">Découvrir</button></a>
+					<a th:href="$@{${slide.url}}"><button class="btn-hero">Découvrir</button></a>
 				</div>
 			</div>
-		</c:forEach>
+		
 		<div class="container-icon-slides-home">
 					<img class="icon-slides-home-left" alt="Icon left" src="assets/icon/arrow-left.svg" onclick="plusSlides(-1)">
 					<img class="icon-slides-home-right" alt="Icon right" src="assets/icon/arrow-right.svg" onclick="plusSlides(1)">
@@ -55,19 +53,20 @@
 		<div class="container-title-categorie">
 			<h1>Vivez l'expérience audio ultime.</h1>
 		</div>
-	 	<c:forEach items="${ListCat }" var="ListCat">
-			<div class="categories-modifier">
+	 	
+			<div th:each="category : ${ListCat}" class="categories-modifier">
 				<div class="categorie-modifier">
 					<div class="container-categorie-infos container-categorie-infos-modifier">
-						<h1><c:out value="${ListCat.description }" /></h1>
+						<h1 th:text="${category.description}"></h1>
+						<!--A MODIFIER LE HREF-->
 						<a href="sous-categories?idCat=${ListCat.id_categorie }" >	
-							<button> <span><c:out value="${ListCat.titre }" /></span></button>  
+							<button> <span th:text="${category.titre}"></span></button>  
 						</a>	
 					</div>
-					<img alt="Image categorie" src="<c:out value="${ListCat.image }" /> ">
+					<img alt="Image categorie" th:src="@{${category.image}}" /> ">
 				</div>
 			</div>
-		</c:forEach>	
+			
 	</div>
 	
 	<div class="container-infos-dione">

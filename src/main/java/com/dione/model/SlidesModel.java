@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-@Entity
+@Entity(name="slide")
 public class SlidesModel {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="id_slides")

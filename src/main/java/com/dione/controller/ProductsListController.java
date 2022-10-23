@@ -9,12 +9,12 @@ public class ProductsListController {
 
 	@GetMapping("/products")
 	public String getProducts() {
-		return "pages/products";
+		return "pages/products-list";
 	}
 	
 	
 	@PostMapping("/products")
 	public String postProducts() {
-		return "pages/products";
+		return "pages/products-list";
 	}
 }

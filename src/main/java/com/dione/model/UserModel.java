@@ -1,14 +1,17 @@
 package com.dione.model;
 
 import java.sql.Date;
+import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-@Entity
+@Entity(name="user")
 public class UserModel {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="id_user")
@@ -20,6 +23,9 @@ public class UserModel {
 	private String email;
 	private String telephone;
 	private String password;
+	
+	@OneToMany(mappedBy="idCommand",cascade = CascadeType.ALL)
+	private Collection<CommandModel> commandes;
 	
 	public UserModel() {
 	}

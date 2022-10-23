@@ -5,12 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-@Entity
+@Entity(name="image")
 public class ImageModel {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="id_image")
 	private Long idImage;
+	@ManyToOne
+	@JoinColumn(name="id_product")
 	private ProductModel produit;
 	private String url;
 	

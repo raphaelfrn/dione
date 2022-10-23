@@ -1,12 +1,18 @@
 package com.dione.model;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
-@Entity
+@Entity(name="product")
 public class ProductModel {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="id_product")
@@ -15,8 +21,11 @@ public class ProductModel {
 	private String description;
 	private double prix;
 	private String image;
-	@Column(name="sub_category")
+	@ManyToOne
+	@JoinColumn(name="idSubCat")
 	private SubCategoryModel subCat;
+	@OneToMany(mappedBy="url",cascade = CascadeType.ALL)
+	private Collection<ImageModel> images;
 	
 	
 	public ProductModel() {

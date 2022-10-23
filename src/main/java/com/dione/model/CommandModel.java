@@ -7,13 +7,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-@Entity
+@Entity(name="command")
 public class CommandModel {
 
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="id_command")
 	private Long idCommand;
+	@ManyToOne
+	@JoinColumn(name="idUser")
 	private UserModel user;
 	private Date dateC;
 	private double total;

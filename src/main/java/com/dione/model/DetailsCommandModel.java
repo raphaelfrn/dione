@@ -5,13 +5,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-@Entity
+@Entity(name="details_command")
 public class DetailsCommandModel {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="id_details_c")
 	private Long idDetailsC;
+	@ManyToOne
+	@JoinColumn(name="idCommand")
 	private CommandModel command;
+	@ManyToOne
+	@JoinColumn(name="idProduct")
 	private ProductModel product;
 	private double quantite;
 	private double prix;

@@ -13,7 +13,7 @@ public class DetailsProductController {
 	}
 	
 	
-	@PostMapping("/details-command")
+	@PostMapping("/details-product")
 	public String postDetailsProduct() {
 		return "pages/details-product";
 	}
